@@ -1,0 +1,167 @@
+{
+  "name": "Buglang",
+  "scopeName": "source.buglang",
+  "fileTypes": [".yap"],
+  "patterns": [
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#keywords"
+    },
+    {
+      "include": "#strings"
+    },
+    {
+      "include": "#numbers"
+    },
+    {
+      "include": "#classes"
+    },
+    {
+      "include": "#functions"
+    },
+    {
+      "include": "#arrays"
+    },
+    {
+      "include": "#dictionaries"
+    },
+    {
+      "include": "#operators"
+    },
+    {
+      "include": "#builtins"
+    }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.double-slash.buglang",
+          "match": "//.*$"
+        },
+        {
+          "name": "comment.block.buglang",
+          "begin": "/\\*",
+          "end": "\\*/"
+        }
+      ]
+    },
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.buglang",
+          "match": "\\b(class|var|func|return|for|new|super|this|import|if|else|while)\\b"
+        }
+      ]
+    },
+    "strings": {
+      "name": "string.quoted.double.buglang",
+      "begin": "\"",
+      "end": "\"",
+      "patterns": [
+        {
+          "name": "constant.character.escape.buglang",
+          "match": "\\\\."
+        }
+      ]
+    },
+    "numbers": {
+      "patterns": [
+        {
+          "name": "constant.numeric.buglang",
+          "match": "\\b(\\d+\\.\\d+|\\d+)(?!\\w)"
+        }
+      ]
+    },
+    "classes": {
+      "patterns": [
+        {
+          "name": "entity.name.class.buglang",
+          "match": "\\bclass\\s+([A-Za-z_][A-Za-z0-9_]*)\\b"
+        },
+        {
+          "name": "entity.other.inherited-class.buglang",
+          "match": "\\b([A-Za-z_][A-Za-z0-9_]*)\\s*(?=[,(])"
+        }
+      ]
+    },
+    "functions": {
+      "patterns": [
+        {
+          "name": "entity.name.function.buglang",
+          "match": "\\bfunc\\s+([A-Za-z_][A-Za-z0-9_]*)\\s*\\("
+        }
+      ]
+    },
+    "arrays": {
+      "patterns": [
+        {
+          "name": "meta.array.buglang",
+          "begin": "\\[",
+          "end": "\\]",
+          "patterns": [
+            {
+              "include": "#numbers"
+            },
+            {
+              "include": "#strings"
+            },
+            {
+              "include": "#arrays"
+            },
+            {
+              "include": "#dictionaries"
+            }
+          ]
+        }
+      ]
+    },
+    "dictionaries": {
+      "patterns": [
+        {
+          "name": "meta.dictionary.buglang",
+          "begin": "\\{",
+          "end": "\\}",
+          "patterns": [
+            {
+              "name": "string.quoted.double.buglang",
+              "match": "\"[^\"]*\""
+            },
+            {
+              "include": "#numbers"
+            },
+            {
+              "include": "#strings"
+            }
+          ]
+        }
+      ]
+    },
+    "operators": {
+      "patterns": [
+        {
+          "name": "keyword.operator.buglang",
+          "match": "\\b(size|add)\\b"
+        },
+        {
+          "name": "punctuation.separator.buglang",
+          "match": "[,;:]"
+        },
+        {
+          "name": "keyword.operator.buglang",
+          "match": "[=<>!+\\-*/.]"
+        }
+      ]
+    },
+    "builtins": {
+      "patterns": [
+        {
+          "name": "support.function.buglang",
+          "match": "\\b(println|print|console|consoleln|math\\.round)\\b"
+        }
+      ]
+    }
+  }
+}
